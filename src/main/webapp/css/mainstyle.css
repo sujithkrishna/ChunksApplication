@@ -1,0 +1,379 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+}
+
+/* Header Styles */
+header {
+    background-color: #2D3E4E; /* Dark Blue */
+    color: white;
+    padding: 30px 20px;
+    text-align: center;
+    font-size: 28px;
+    font-weight: 700;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    margin-bottom: 10px;
+    font-size: 32px;
+}
+
+header p {
+    font-size: 16px;
+    font-weight: 400;
+    margin-top: 5px;
+}
+
+/* Navigation Styles */
+nav ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin-top: 20px;
+}
+
+nav ul li {
+    margin-right: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333; /* Dark Gray for text */
+    font-size: 18px;
+    padding: 12px 25px;
+    background-color: #b0b0b0; /* Darker Light Gray for default state */
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+nav ul li a.active {
+    background-color: #666; /* Dark Gray for Active Links */
+    color: #fff; /* White text for active links */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  /* Subtle shadow for active link */
+}
+
+nav ul li a:hover {
+    background-color: #999; /* Medium Gray on hover */
+    color: #fff; /* White text on hover */
+    transform: translateY(-2px);
+}
+
+/* Media Query for Responsive Navigation */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin-right: 0;
+        margin-bottom: 15px;  /* Add space between buttons on mobile */
+    }
+}
+
+/* Main Content Area */
+main {
+    padding: 40px;
+    max-width: 1290px;
+    margin: 0 auto;
+}
+
+section {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+section h2 {
+    font-size: 28px;
+    font-weight: 600;
+    color: #003366; /* Dark Blue */
+    margin-bottom: 20px;
+}
+
+section p {
+    font-size: 16px;
+    color: #555;
+}
+
+/* Card Styles */
+.card {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    background: #e0e0e0; /* Medium Dark Grey Background */
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    min-height: 150px;  /* Increased height of the card */
+}
+
+.card .stat-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #555;
+}
+
+.card .stat-value {
+    font-size: 24px;
+    font-weight: 700;
+    color: #007bff; /* Bright Blue */
+}
+
+.card .stat-value.negative {
+    color: #e74c3c; /* Red for Negative Values */
+}
+
+/* Footer Styles */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    font-size: 14px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Background Image */
+.background-image {
+    background-image: url('https://images.unsplash.com/photo-1537724326059-2ea20251b9c8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80'); /* Replace with your image */
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    filter: blur(5px);
+}
+
+.content-wrapper {
+    position: relative;
+    z-index: 1;
+}
+
+/* Form Container */
+form {
+  margin: 20px 0;
+  padding: 20px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Split Form into Left and Right Columns */
+.form-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+/* Left Column */
+.form-left,
+.form-right {
+  width: 48%;
+}
+
+/* Form Group */
+.form-group {
+  margin-bottom: 20px;
+
+}
+
+/* Labels */
+label {
+  font-size: 16px;
+  font-weight: 500;
+  color: #555;
+  width: 40%;
+  display: inline-block;
+}
+
+/* Input Fields */
+.input-field {
+  padding: 12px;
+  font-size: 14px;
+  width: 55%;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #fafafa;
+  color: #333;
+  transition: border-color 0.3s ease;
+}
+
+.input-field:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Responsive Form Layout */
+@media (max-width: 768px) {
+  .form-group {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  label {
+    width: 100%;
+    margin-bottom: 8px;
+  }
+
+  .input-field {
+    width: 100%;
+  }
+}
+
+/* Custom styles for the Create Finance form */
+.form-container {
+  margin-top: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+label {
+  font-size: 16px;
+  font-weight: 500;
+  color: #555;
+  width: 40%;
+}
+
+.input-field {
+  padding: 12px;
+  font-size: 14px;
+  width: 55%;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #fafafa;
+  color: #333;
+  transition: border-color 0.3s ease;
+}
+
+.input-field:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Button Styles */
+.button-group button {
+    background: linear-gradient(145deg, #666, #555); /* Dark Gray gradient */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.button-group button:hover {
+    background: linear-gradient(145deg, #555, #444); /* Slightly darker gradient on hover */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+.button-group button:active {
+    background: linear-gradient(145deg, #444, #333); /* Even darker gradient on click */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transform: translateY(0);
+}
+
+/* Ensure button groups are displayed in a row */
+.button-group-approved {
+    display: inline-block; /* Makes buttons appear in the same row */
+    margin-right: 10px; /* Add some space between buttons */
+}
+
+button {
+    padding: 10px 20px;
+    background: linear-gradient(145deg, #666, #555); /* Dark Gray gradient */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+button:hover {
+    background: linear-gradient(145deg, #555, #444); /* Slightly darker gradient on hover */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+button:active {
+    background: linear-gradient(145deg, #444, #333); /* Even darker gradient on click */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transform: translateY(0);
+}
+
+/* Clicked State with 10-second delay */
+.button-group button.clicked {
+    background: linear-gradient(145deg, #444, #333); /* Darker gradient for clicked state */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Flatten shadow to simulate being pressed */
+    transform: translateY(0); /* Reset any hover/active transformations */
+    transition: all 10s ease; /* 10-second transition */
+}
+
+button.clicked {
+    background: linear-gradient(145deg, #444, #333); /* Darker gradient for clicked state */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Flatten shadow to simulate being pressed */
+    transform: translateY(0); /* Reset any hover/active transformations */
+    transition: all 10s ease; /* 10-second transition */
+}
+
+/* User Profile Styles */
+.user-profile {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.user-profile:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.user-avatar {
+    transition: transform 0.3s ease;
+}
+
+.user-profile:hover .user-avatar {
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    header > div {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .user-profile {
+        margin-top: 1rem;
+        padding: 0.5rem;
+    }
+}

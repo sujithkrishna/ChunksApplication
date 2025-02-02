@@ -1,0 +1,112 @@
+    /* Disable scrolling */
+    html, body {
+      overflow: hidden; /* Prevent scrolling */
+      height: 100%; /* Ensure the body takes full height */
+      margin: 0; /* Remove default margin */
+      padding: 0; /* Remove default padding */
+    }
+
+    /* Reuse the same styles for consistency */
+    .form-group {
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    .form-group label {
+      margin-right: 10px;
+      display: inline-block;
+      text-align: left;
+      width: 40%; /* Fixed width for labels to align properly */
+    }
+
+    .input-field {
+      width: 55%; /* Match the width of input fields in other forms */
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      background-color: #fafafa;
+      color: #333;
+      transition: border-color 0.3s ease;
+    }
+
+    .input-field:focus {
+      border-color: #007bff;
+      outline: none;
+    }
+
+    /* Button styles */
+    .button-group {
+      display: flex;
+      justify-content: center;
+      gap: 10px; /* Space between buttons */
+      margin-top: 20px; /* Add some space above the buttons */
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    /* Background Image */
+    .background-image {
+      background-image: url('https://images.unsplash.com/photo-1537724326059-2ea20251b9c8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+      background-size: cover;
+      background-position: center;
+      position: fixed; /* Fixed to prevent scrolling issues */
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      filter: blur(5px);
+    }
+
+    .content-wrapper {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh; /* Full viewport height */
+    }
+
+    /* Section styles to match the Approvals page */
+    section {
+      background-color: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      max-width: 500px; /* Limit the width of the login form */
+      width: 100%; /* Ensure it takes full width within the max-width */
+      margin-top: -600px; /* Adjusted to move the login section further up */
+    }
+
+    section h2 {
+      font-size: 28px;
+      font-weight: 600;
+      color: #003366; /* Dark Blue */
+      margin-bottom: 20px;
+    }
+
+    /* Footer styles */
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      position: fixed; /* Fixed position to keep footer at the bottom */
+      bottom: 0;
+      width: 100%;
+      z-index: 2; /* Ensure footer is above the background image */
+    }
