@@ -13,7 +13,7 @@ public class HomePageController {
 		return "index";
 	}
 
-	@GetMapping(path = "/info")
+	@GetMapping(path = "/infos")
 	public String handleInfoPage() {
 		return "info";
 	}
