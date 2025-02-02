@@ -309,7 +309,7 @@ header .navbar {
 .navbar .navbar-nav .nav-link.active,
 .navbar .navbar-nav .nav-link.show,
 .navbar .navbar-nav .show>.nav-link {
-	color: #2D3E4E;
+	color: #CAC71C;
 	border-bottom: 3px solid #2D3E4E;
 }
 .navbar .navbar-toggler-icon {
@@ -459,7 +459,7 @@ ul.slick-dots {
   text-transform: uppercase;
   font-weight: 700;
   letter-spacing: 1px;
-  color:#2D3E4E;
+  color:#CAC71C;
   animation:fadeOutRight 1s both;
 }
 
@@ -610,7 +610,7 @@ ul.slick-dots {
 
 .fun-facts em {
 	font-style: normal;
-	color: #2D3E4E;
+	color: #CAC71C;
 }
 
 .fun-facts p {
@@ -631,7 +631,7 @@ ul.slick-dots {
 
 .count-digit {
     margin: 5px 0px;
-    color: #2D3E4E;
+    color: #CAC71C;
     font-weight: 700;
     font-size: 36px;
 }

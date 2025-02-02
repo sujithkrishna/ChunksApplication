@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
  * @author Sujith Krishna
  */
 @Controller
-public class HomePageController {
+public class HomeController {
 	
 	@GetMapping(path = {"/", "/home", "/index"})
 	public String handleHomePage() {

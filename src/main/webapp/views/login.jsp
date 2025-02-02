@@ -25,23 +25,23 @@
         <h2>Login</h2>
 
         <!-- Login Form -->
-        <form action="dashboard" onsubmit="return validateForm()">
+        <form method="post" action="login" onsubmit="return validateForm()">
           <!-- Username -->
           <div class="form-group">
             <label for="username">Username</label>
-            <input type="text" id="username" class="input-field" placeholder="Enter your username" required>
+            <input type="text" name="username" class="input-field" placeholder="Enter your username" required>
           </div>
 
           <!-- Password -->
           <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" id="password" class="input-field" placeholder="Enter your password" required>
+            <input type="password" name="password" class="input-field" placeholder="Enter your password" required>
           </div>
 
           <!-- Submit and Cancel Button -->
           <div class="button-group">
             <button type="submit">Login</button>
-            <button type="button">Cancel</button>
+            <button type="button" onclick="backToWebsite()">Cancel</button>
           </div>
         </form>
       </section>
@@ -54,6 +54,8 @@
   </footer>
 
   <script>
+  	var contextPath = "http://www.chunksfinance.com";
+  
     function validateForm() {
       var username = document.getElementById("username").value;
       var password = document.getElementById("password").value;
@@ -68,6 +70,12 @@
         return false;
       }
     }
+    
+    function backToWebsite() {
+        console.log("Context Path: " + contextPath);
+    	window.location.href = contextPath;
+    }
+    
   </script>
 </body>
 </html>
