@@ -56,28 +56,28 @@
     <header class="">
       <nav class="navbar navbar-expand-lg">
         <div class="container">
-          <a class="navbar-brand" href="index.html"><h2>Chunks Finance</h2></a>
+          <a class="navbar-brand" href="index"><h2>Chunks Finance</h2></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item active">
-                <a class="nav-link" href="index.html">Home
+                <a class="nav-link" href="index">Home
                   <span class="sr-only">(current)</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="about.html">About Us</a>
+                <a class="nav-link" href="about">About Us</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="services.html">Our Services</a>
+                <a class="nav-link" href="services">Our Services</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="contact.html">Contact Us</a>
+                <a class="nav-link" href="contact">Contact Us</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="login.html">Login</a>
+                <a class="nav-link" href="login">Login</a>
               </li>			  
             </ul>
           </div>
@@ -96,7 +96,7 @@
                   <h6>we are ready to help you</h6>
                   <h4>Financial Analysis<br>&amp; Consulting</h4>
                   <p>Start planning today for a secure tomorrow. Discover personalized financial plans to meet your goals!</p>
-                  <a href="contact.html" class="filled-button">contact us</a>
+                  <a href="contact" class="filled-button">contact us</a>
                 </div>
             </div>
           </div>
@@ -108,7 +108,7 @@
                   <h6>we are here to support you</h6>
                   <h4>Market Insights</h4>
                   <p>Stay ahead with daily updates on the stock market, cryptocurrency, and global finance trends. Get real-time insights now!</p>
-                  <a href="services.html" class="filled-button">our services</a>
+                  <a href="services" class="filled-button">our services</a>
                 </div>
             </div>
           </div>
@@ -120,7 +120,7 @@
                   <h6>we have a solid background</h6>
                   <h4>Investment Opportunities</h4>
                   <p>Looking to grow your wealth? Explore investment opportunities tailored to your risk profile and financial goals.</p>
-                  <a href="about.html" class="filled-button">learn more</a>
+                  <a href="about" class="filled-button">learn more</a>
                 </div>
             </div>
           </div>
@@ -132,7 +132,7 @@
                   <h6>we are ready to help you</h6>
                   <h4>Loan Services</h4>
                   <p>Need financing? Compare personal, business, and home loan options with competitive rates and flexible terms.</p>
-                  <a href="about.html" class="filled-button">learn more</a>
+                  <a href="about" class="filled-button">learn more</a>
                 </div>
             </div>
           </div>
@@ -151,7 +151,7 @@
             <span>Mauris ut dapibus velit cras interdum nisl ac urna tempor mollis.</span>
           </div>
           <div class="col-md-4">
-            <a href="contact.html" class="border-button">Contact Us</a>
+            <a href="contact" class="border-button">Contact Us</a>
           </div>
         </div>
       </div>

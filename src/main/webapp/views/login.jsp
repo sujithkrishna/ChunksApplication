@@ -25,7 +25,7 @@
         <h2>Login</h2>
 
         <!-- Login Form -->
-        <form action="dashboard.html" onsubmit="return validateForm()">
+        <form action="dashboard" onsubmit="return validateForm()">
           <!-- Username -->
           <div class="form-group">
             <label for="username">Username</label>

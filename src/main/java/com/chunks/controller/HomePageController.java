@@ -17,4 +17,20 @@ public class HomePageController {
 	public String handleInfoPage() {
 		return "info";
 	}
+	
+	@GetMapping(path = "/about")
+	public String handleAboutPage() {
+		return "about";
+	}
+	
+	@GetMapping(path = "/services")
+	public String handleServicePage() {
+		return "services";
+	}
+	
+	@GetMapping(path = "/contact")
+	public String handleContactPage() {
+		return "contact";
+	}
+	
 }

@@ -50,16 +50,16 @@
     <!-- Navigation -->
     <nav>
         <ul>
-            <li><a href="dashboard.html">Dashboard</a></li>
-            <li><a href="approvals.html">Approvals</a></li>
-            <li><a href="financeCollecionUploads.html">Finance Collection Upload</a></li>
-            <li><a href="financeCollecionStatus.html">Finance Collection Status</a></li>
-            <li><a href="loan.html">Loans</a></li>
-            <li><a href="earnings.html">Earnings</a></li>
-            <li><a href="expenses.html">Expenses</a></li>
-            <li><a href="member.html" >Members</a></li>
-            <li><a href="newChits.html">Chits</a></li>
-            <li><a href="createFinance.html" class="active">Create Finance</a></li>
+            <li><a href="dashboard">Dashboard</a></li>
+            <li><a href="approvals">Approvals</a></li>
+            <li><a href="financeCollecionUploads">Finance Collection Upload</a></li>
+            <li><a href="financeCollecionStatus">Finance Collection Status</a></li>
+            <li><a href="loan">Loans</a></li>
+            <li><a href="earnings">Earnings</a></li>
+            <li><a href="expenses">Expenses</a></li>
+            <li><a href="member" >Members</a></li>
+            <li><a href="newChits">Chits</a></li>
+            <li><a href="createFinance" class="active">Create Finance</a></li>
         </ul>
     </nav>
 
@@ -164,7 +164,7 @@
 				e.preventDefault();
 				if(this.classList.contains('yes')) {
 					// Replace with actual logout logic
-					window.location.href = 'login.html'; // Removed leading slash
+					window.location.href = 'login'; // Removed leading slash
 				}
 				document.querySelector('.logout-confirm').style.display = 'none';
 			});
