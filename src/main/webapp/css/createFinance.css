@@ -316,4 +316,44 @@
 	
 	.success-message.visible {
 	    display: block;
-	}		   					
+	}
+	
+    /* Edit OverLay */
+    .edit-overlay {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(255,255,255,0.95);
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        text-align: center;
+        z-index: 1000;
+        display: none;
+    }
+
+    .edit-overlay p {
+        margin: 0 0 1.5rem;
+        color: #2c3e50;
+    }
+
+    /* Edit OverLay */
+    .delete-overlay {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(255,255,255,0.95);
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        text-align: center;
+        z-index: 1000;
+        display: none;
+    }
+
+    .delete-overlay p {
+        margin: 0 0 1.5rem;
+        color: #2c3e50;
+    }    			   					

@@ -62,6 +62,61 @@
 	</div>
 
 
+	<!-- Add this HTML for Edit dialog -->
+	<div id="edit-overlay" class="edit-overlay">
+		<p>Are wanted to edit</p>
+         <div class="form-group">
+             <label for="finance-type">Finance Type</label>
+             <select id="financeType" name="financeType" class="input-field">
+                 <option value="" disabled selected>Select Finance Type</option>
+                 <option value="Primary">Primary</option>
+                 <option value="Secondary">Secondary</option>
+             </select>
+          </div>	
+          <div class="form-group">   
+            <br>
+            <label for="finance-type">Finance Name</label>
+            <select id="financeType" name="financeType" class="input-field">
+                <option value="" disabled selected>Select Finance Name</option>
+                <option value="Primary">Onam Fund</option>
+                <option value="Secondary">Chunks Finance</option>
+            </select>
+          </div>  
+		<div class="confirm-buttons">
+			<button class="confirm-btn yes">Yes, Edit</button>
+			<button class="confirm-btn no">Cancel</button>
+		</div>             
+	</div>
+	
+	
+
+	<!-- Add this HTML for Edit dialog -->
+	<div id="delete-overlay" class="delete-overlay">
+		<p>Are wanted to Delete</p>
+         <div class="form-group">
+             <label for="finance-type">Finance Type</label>
+             <select id="financeType" name="financeType" class="input-field">
+                 <option value="" disabled selected>Select Finance Type</option>
+                 <option value="Primary">Primary</option>
+                 <option value="Secondary">Secondary</option>
+             </select>
+          </div>	
+           <div class="form-group">   
+             <br>
+             <label for="finance-type">Finance Name</label>
+             <select id="financeType" name="financeType" class="input-field">
+                 <option value="" disabled selected>Select Finance Name</option>
+                 <option value="Primary">Onam Fund</option>
+                 <option value="Secondary">Chunks Finance</option>
+             </select>
+           </div> 
+		<div class="confirm-buttons">
+			<button class="confirm-btn yes">Yes, Delete</button>
+			<button class="confirm-btn no">Cancel</button>
+		</div>           
+	</div>
+
+
 	<!-- Modified Header Section -->
 	<%@ include file="modifiedHeader.jsp" %>
 	
@@ -119,7 +174,8 @@
                     <!-- Submit Button -->
                     <div class="button-group">
                         <button id="create-button" type="submit">Create</button>
-                        <button id="delete-button" type="submit">Delete</button>
+                        <button id="edit-button" onclick="financeEdit()" type="button">Edit</button>
+                        <button id="delete-button" onclick="financeDelete()" type="button">Delete</button>
                     </div>
                 </form>
             </section>
@@ -130,6 +186,14 @@
 	<%@ include file="chunksFinanceFooter.jsp" %>
 	 <script>
 
+	     function handleButtonClick(event) {
+	         const button = event.target;
+	         button.classList.add('clicked');
+	         setTimeout(() => {
+	             button.classList.remove('clicked');
+	         }, 10000); // 10 seconds delay
+	     }
+     
 	 	document.querySelectorAll('.button-group button, button').forEach(button => {
             button.addEventListener('click', handleButtonClick);
         });
@@ -160,6 +224,13 @@
 				document.querySelector('.logout-confirm').style.display = 'none';
 			});
 		});
+		function financeEdit(){
+			document.getElementById('edit-overlay').style.display = 'block';
+		}
+
+		function financeDelete(){
+			document.getElementById('delete-overlay').style.display = 'block';
+		}	
 		
     </script>
 </body>
