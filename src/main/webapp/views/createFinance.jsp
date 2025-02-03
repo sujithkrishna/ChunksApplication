@@ -157,30 +157,24 @@
         function handleButtonClick(event) {
             const button = event.target;
 
-            // Add the 'clicked' class to simulate the button being pressed
             button.classList.add('clicked');
 
-            // Remove the 'clicked' class after 10 seconds
             setTimeout(() => {
                 button.classList.remove('clicked');
             }, 10000); // 10 seconds delay
         }
 
-        // Add click event listeners to all buttons
         document.querySelectorAll('.button-group button, button').forEach(button => {
             button.addEventListener('click', handleButtonClick);
         });
 		
  	
-        // Select all navigation links
         const navLinks = document.querySelectorAll('nav ul li a');
 
         // Add click event listener to each link
         navLinks.forEach(link => {
             link.addEventListener('click', function() {
-                // Remove the 'active' class from all links
                 navLinks.forEach(link => link.classList.remove('active'));
-                // Add 'active' class to the clicked link
                 this.classList.add('active');
             });
         });
@@ -195,7 +189,6 @@
 			btn.addEventListener('click', function(e) {
 				e.preventDefault();
 				if(this.classList.contains('yes')) {
-					// Replace with actual logout logic
 					window.location.href = 'login'; // Removed leading slash
 				}
 				document.querySelector('.logout-confirm').style.display = 'none';
