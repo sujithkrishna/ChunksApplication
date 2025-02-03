@@ -24,6 +24,11 @@
 			<button class="confirm-btn no">Cancel</button>
 		</div>
 	</div>
+	
+	<div id="dynamic-message" class="dynamic-message">
+		<p>The New Finance has been created</p>
+	</div>
+	
 
 	<!-- Modified Header Section -->
 	<header>
@@ -69,7 +74,7 @@
 
     <!-- Main Content Section -->
     <main>
-        <div class="content-wrapper">
+        <div id="content-wrapper" class="content-wrapper">
             <section id="Content">
                 <h2>Chunks Finance</h2>
                 <p>Welcome to the Chunks Finance Dashboard. Here is your detailed financial overview:</p>
@@ -77,19 +82,19 @@
                 <div class="card">
                     <div>
                         <div class="stat-title">Total Earnings</div>
-                        <div class="stat-value">₹50,000</div>
+                        <div class="stat-value">&#8377;50,000</div>
                     </div>
                     <div>
                         <div class="stat-title">Total Expenses</div>
-                        <div class="stat-value negative">-₹15,000</div>
+                        <div class="stat-value negative">-&#8377;15,000</div>
                     </div>
                     <div>
                         <div class="stat-title">Pending Loans</div>
-                        <div class="stat-value">₹10,000</div>
+                        <div class="stat-value">&#8377;10,000</div>
                     </div>
                     <div>
                         <div class="stat-title">Current Balance</div>
-                        <div class="stat-value">₹10,000</div>
+                        <div class="stat-value">&#8377;10,000</div>
                     </div>
                 </div>
             </section>
@@ -101,19 +106,19 @@
                 <div class="card">
                     <div>
                         <div class="stat-title">Total Earnings</div>
-                        <div class="stat-value">₹50,000</div>
+                        <div class="stat-value">&#8377;50,000</div>
                     </div>
                     <div>
                         <div class="stat-title">Total Expenses</div>
-                        <div class="stat-value">₹15,000</div>
+                        <div class="stat-value">&#8377;15,000</div>
                     </div>
                     <div>
                         <div class="stat-title">Pending Loans</div>
-                        <div class="stat-value">₹10,000</div>
+                        <div class="stat-value">&#8377;10,000</div>
                     </div>
                     <div>
                         <div class="stat-title">Current Balance</div>
-                        <div class="stat-value">₹10,000</div>
+                        <div class="stat-value">&#8377;10,000</div>
                     </div>
                 </div>
             </section>
@@ -154,6 +159,20 @@
 				document.querySelector('.logout-confirm').style.display = 'none';
 			});
 		});	
+		
+		
+		document.getElementById('content-wrapper').addEventListener('click', function(e) {
+			e.preventDefault();
+			const dialog = document.getElementById('dynamic-message');
+			dialog.style.display = 'block';
+		});
+		
+		document.getElementById('dynamic-message').addEventListener('click', function(e) {
+			e.preventDefault();
+			const dialog = document.getElementById('dynamic-message');
+			dialog.style.display = 'none';
+		});
+		
     </script>
 
 </body>

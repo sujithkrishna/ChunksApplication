@@ -264,4 +264,23 @@
     .confirm-btn:hover {
         opacity: 0.9;
         transform: translateY(-2px);
+    }
+    /* OverLay */
+    .dynamic-message {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(255,255,255,0.95);
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        text-align: center;
+        z-index: 1000;
+        display: none;
+    }
+
+    .dynamic-message p {
+        margin: 0 0 1.5rem;
+        color: #2c3e50;
     }	
