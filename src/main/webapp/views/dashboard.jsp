@@ -120,10 +120,8 @@
         </div>
     </main>
 
-    <!-- Footer Section -->
-    <footer>
-        &copy; 2025 Chunks Finance | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
-    </footer>
+	<!-- Footer Fragment -->
+	<%@ include file="chunksFinanceFooter.jsp" %>
 
     <!-- Move the script here -->
     <script>

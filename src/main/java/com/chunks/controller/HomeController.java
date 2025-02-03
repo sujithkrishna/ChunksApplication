@@ -9,22 +9,22 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class HomeController {
 	
 	@GetMapping(path = {"/", "/home", "/index"})
-	public String handleHomePage() {
+	public String handleHome() {
 		return "index";
 	}
 
 	@GetMapping(path = "/infos")
-	public String handleInfoPage() {
+	public String handleInfo() {
 		return "info";
 	}
 	
 	@GetMapping(path = "/about")
-	public String handleAboutPage() {
+	public String handleAbout() {
 		return "about";
 	}
 	
 	@GetMapping(path = "/services")
-	public String handleServicePage() {
+	public String handleService() {
 		return "services";
 	}
 	

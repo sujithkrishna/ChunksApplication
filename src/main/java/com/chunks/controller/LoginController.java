@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class LoginController {
 	
 	@PostMapping(path = "/login")
-	public String handleLoginPage(@RequestParam String username, @RequestParam String password, Model model) {
+	public String handleLogin(@RequestParam String username, @RequestParam String password, Model model) {
 		System.out.println("Post Page Called");
 		System.out.println("User is"+username);
 		System.out.println("password is"+password);

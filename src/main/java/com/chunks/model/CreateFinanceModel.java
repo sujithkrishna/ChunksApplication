@@ -29,6 +29,7 @@ import lombok.NoArgsConstructor;
     name = "finance",
     uniqueConstraints = {
         @UniqueConstraint(
+        	name = "CONSTRAINT_INDEX_F",		
             columnNames = {"finance_type", "finance_name", "finance_owner_name"}
         )
     }

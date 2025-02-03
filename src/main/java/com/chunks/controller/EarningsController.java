@@ -7,16 +7,14 @@ import org.springframework.web.bind.annotation.GetMapping;
  * 
  * 
  * @author Sujith Krishna
- * @date 2 Feb 2025
+ * @date 3 Feb 2025
  */
 @Controller
-public class DashboardController {
+public class EarningsController {
 
-	
-	@GetMapping(path = "/dashboard")
-	public String handleDashboard() {
-		return "dashboard";
+
+	@GetMapping(path = "/earnings")
+	public String handleEarnings() {
+		return "earnings";
 	}
-
-	
 }

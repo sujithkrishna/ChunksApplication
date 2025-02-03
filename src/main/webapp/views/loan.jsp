@@ -243,11 +243,8 @@
     </div>
   </main>
 
-  <!-- Footer Section -->
-  <footer>
-    &copy; 2025 Chunks Finance | <a href="#" style="color: white; text-decoration: none;">Privacy Policy</a> | <a href="#" style="color: white; text-decoration: none;">Terms of Service</a>
-  </footer>
-
+	<!-- Footer Fragment -->
+	<%@ include file="chunksFinanceFooter.jsp" %>
   <script>
 
         // Function to handle button click

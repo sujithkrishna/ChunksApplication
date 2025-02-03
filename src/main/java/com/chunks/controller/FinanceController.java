@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.chunks.controller;
 
 import java.io.IOException;
@@ -11,10 +8,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.chunks.exception.DuplicateFinanceException;
 import com.chunks.exception.ErrorDetails;
 import com.chunks.model.CreateFinanceModel;
-import com.chunks.repository.FinanceRepository;
 import com.chunks.service.FinanceService;
 
 import jakarta.servlet.ServletException;
@@ -33,13 +31,8 @@ public class FinanceController {
 	@Autowired
 	private FinanceService financeService;
 	
-	@Autowired
-	private ErrorDetails dataIntegrityException;
-	
 	@GetMapping(path = "/createFinance")
 	public String handleFinance() {
-		System.out.println("Get Method---------------");
-		System.out.println("dataIntegrityException : "+dataIntegrityException.getMessage());
 		return "createFinance";
 	}
 	
@@ -49,8 +42,7 @@ public class FinanceController {
 						            @RequestParam String financeName,
 						            @RequestParam String financeOwnerName,
 						            @RequestParam String financeCreationDate,
-						            @RequestParam String financeAmount,HttpServletRequest request,HttpServletResponse response) {
-		System.out.println("START-------------------------------------------");
+						            @RequestParam String financeAmount,HttpServletRequest request,HttpServletResponse response,RedirectAttributes redirectAttributes ) {
         LocalDate creationDate = LocalDate.parse(financeCreationDate); // Convert String to LocalDate
         CreateFinanceModel financeModel = new CreateFinanceModel();
         
@@ -60,27 +52,18 @@ public class FinanceController {
         financeModel.setFinanceOwner(financeOwnerName);
         
         
-       // financeModel.setFinanceKey(financeModelKey);
         financeModel.setFinanceCreationDate(creationDate);
         financeModel.setFinanceAmount(Double.parseDouble(financeAmount));
         financeModel.setCurrentFinanceAmount(0);
-	    		
+		try {
+			financeService.createFinance(financeModel);
+	        redirectAttributes.addFlashAttribute("success", "Finance created successfully!");
+	        return "redirect:/createFinance";
+		} catch (DuplicateFinanceException e) {
+			redirectAttributes.addFlashAttribute("error", "A duplicate entry exists.");
+	        return "redirect:/createFinance";
+		} 
         
-        boolean status =  financeService.createFinance(financeModel); 
-        if(!status) {
-        	 request.setAttribute("error", "duplicate");
-     	    try {
-     			request.getRequestDispatcher("createFinance").forward(request, response);
-     		} catch (ServletException e) {
-     			e.printStackTrace();
-     		} catch (IOException e) {
-     			e.printStackTrace();
-     		}	
-        }
-        
-		System.out.println("Post Method---------------status"+status);
-		System.out.println("dataIntegrityException : "+dataIntegrityException.getMessage());
-		return "createFinance";
 	}
 
 }

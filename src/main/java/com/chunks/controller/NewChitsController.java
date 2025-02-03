@@ -1,3 +1,6 @@
+/**
+ * 
+ */
 package com.chunks.controller;
 
 import org.springframework.stereotype.Controller;
@@ -7,16 +10,13 @@ import org.springframework.web.bind.annotation.GetMapping;
  * 
  * 
  * @author Sujith Krishna
- * @date 2 Feb 2025
+ * @date 3 Feb 2025
  */
 @Controller
-public class DashboardController {
+public class NewChitsController {
 
-	
-	@GetMapping(path = "/dashboard")
-	public String handleDashboard() {
-		return "dashboard";
+	@GetMapping(path = "/newChits")
+	public String handleNewChits() {
+		return "newChits";
 	}
-
-	
 }
