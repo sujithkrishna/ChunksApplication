@@ -293,4 +293,27 @@
 	
 	.error-message.visible {
 	    display: block;
-	}   					
+	}
+	
+	
+	
+	
+	.success-message {
+	    color: rgb(0, 168, 0); /* Danger red */
+	    font-size: 16px;
+	    text-align: center;
+	    margin-bottom: 1rem;
+	    border: 1px solid rgb(0, 119, 0);
+	    background-color: #daeed5;
+	    padding: 10px;
+	    border-radius: 5px;
+	    transition: opacity 0.3s ease; /* Optional: smooth transition */
+	}
+	
+	.success-message.hidden {
+	    display: none;
+	}
+	
+	.success-message.visible {
+	    display: block;
+	}		   					

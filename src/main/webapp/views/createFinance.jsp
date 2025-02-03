@@ -21,6 +21,7 @@
 			    const day = String(today.getDate()).padStart(2, '0');
 			    const formattedDate = year + "-" + month + "-" + day;
 			    document.getElementById('financeCreationDate').value = formattedDate;
+			    
 			  }
 		  // Call the function when the page loads
 		  window.onload = setTodayDate;		
@@ -29,12 +30,21 @@
 		      errorDiv.textContent = message; // Set the error message dynamically
 		      errorDiv.classList.remove('hidden');
 		      errorDiv.classList.add('visible');
+		      
+		      const sucessDiv = document.getElementById('success-message');
+		      sucessDiv.textContent = message; // Set the error message dynamically
+		      sucessDiv.classList.remove('hidden');
+		      sucessDiv.classList.add('visible');		      
 		  }
 
 		  function hideError() {
 		      const errorDiv = document.getElementById('error-message');
 		      errorDiv.classList.remove('visible');
 		      errorDiv.classList.add('hidden');
+		      
+		      const sucessDiv = document.getElementById('success-message');
+		      sucessDiv.classList.remove('visible');
+		      sucessDiv.classList.add('hidden');		      
 		  }		  
 	</script>
 </head>
@@ -51,6 +61,7 @@
 		</div>
 	</div>
 
+
 	<!-- Modified Header Section -->
 	<%@ include file="modifiedHeader.jsp" %>
 	
@@ -66,6 +77,9 @@
 					<div id="error-message" class="error-message <%= request.getAttribute("error") != null ? "visible" : "hidden" %>">
 					    <c:out value="${error}" />
 					</div>
+					<div id="success-message" class="success-message <%= request.getAttribute("success") != null ? "visible" : "hidden" %>">
+					    <c:out value="${success}" />
+					</div>					
                 <form method="post" action="createFinance" >
                     <div class="form-group">
                         <label for="finance-type">Finance Type</label>
@@ -104,8 +118,8 @@
 
                     <!-- Submit Button -->
                     <div class="button-group">
-                        <button type="submit">Create</button>
-                        <button type="submit">Delete</button>
+                        <button id="create-button" type="submit">Create</button>
+                        <button id="delete-button" type="submit">Delete</button>
                     </div>
                 </form>
             </section>
@@ -115,18 +129,8 @@
 	<!-- Footer Fragment -->
 	<%@ include file="chunksFinanceFooter.jsp" %>
 	 <script>
-        // Function to handle button click
-        function handleButtonClick(event) {
-            const button = event.target;
 
-            button.classList.add('clicked');
-
-            setTimeout(() => {
-                button.classList.remove('clicked');
-            }, 10000); // 10 seconds delay
-        }
-
-        document.querySelectorAll('.button-group button, button').forEach(button => {
+	 	document.querySelectorAll('.button-group button, button').forEach(button => {
             button.addEventListener('click', handleButtonClick);
         });
 		
@@ -155,7 +159,8 @@
 				}
 				document.querySelector('.logout-confirm').style.display = 'none';
 			});
-		});		
+		});
+		
     </script>
 </body>
 </html>
