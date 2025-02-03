@@ -8,6 +8,20 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">		
     <link rel="stylesheet" href="css/mainstyle.css">
     <link rel="stylesheet" href="css/createFinance.css">	
+    <script>
+	    function setTodayDate() {
+			    const today = new Date();
+			    const year = today.getFullYear();
+			    const month = String(today.getMonth() + 1).padStart(2, '0'); // Months are zero-based, so add 1
+			    const day = String(today.getDate()).padStart(2, '0');
+			    const formattedDate = year + "-" + month + "-" + day;
+			    // Set the value of the finance-date input field to today's date
+			    document.getElementById('finance-date').value = formattedDate;
+			  }
+	
+			  // Call the function when the page loads
+			  window.onload = setTodayDate;		
+	</script>
 </head>
 <body>
     <!-- Background Image -->
@@ -68,40 +82,40 @@
         <div class="content-wrapper">
             <section>
                 <h2>Create Finance</h2>
-                <form>
+                <form method="post" action="createFinance" >
                     <div class="form-group">
                         <label for="finance-type">Finance Type</label>
-                        <select id="finance-type" class="input-field">
+                        <select id="financeType" name="financeType" class="input-field">
                             <option value="" disabled selected>Select Finance Type</option>
-                            <option value="chunks-finance">Primary</option>
-                            <option value="onam-fund">Secondary</option>
+                            <option value="Primary">Primary</option>
+                            <option value="Secondary">Secondary</option>
                         </select>
                     </div>
 
                     <div class="form-group">
                         <label for="finance-name">Finance Name</label>
-                        <input type="text" id="finance-name" class="input-field" placeholder="Enter finance Name" required>
+                        <input type="text" id="financeName" name="financeName" class="input-field" placeholder="Enter finance Name" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="finance-owner-name">Finance Owner Name</label>
-                        <select id="finance-owner-name" class="input-field">
+                        <label for="financeOwnerNames">Finance Owner Name</label>
+                        <select id="financeOwnerName"  name="financeOwnerName" class="input-field">
                             <option value="" disabled selected>Select Person</option>
-                            <option value="johnDoe">Sujith Krishna</option>
-                            <option value="janeDoe">Fr Jaison</option>
-                            <option value="alexSmith">Manesh</option>
-                            <option value="maryJohnson">Jijin</option>
+                            <option value="SujithKrishna">Sujith Krishna</option>
+                            <option value="FrJaison">Fr Jaison</option>
+                            <option value="Manesh">Manesh</option>
+                            <option value="Jijin">Jijin</option>
                         </select>
                     </div>
 
                     <div class="form-group">
                         <label for="finance-date">Finance Date</label>
-                        <input type="date" id="finance-date" class="input-field" required>
+                        <input type="date" id="financeCreationDate" name="financeCreationDate" class="input-field" required>
                     </div>
 
                     <div class="form-group">
                         <label for="finance-amount">Finance Amount</label>
-                        <input type="number" id="finance-amount" class="input-field" placeholder="Enter finance amount" required>
+                        <input type="number" id="financeAmount" name="financeAmount" class="input-field" placeholder="Enter finance amount" required>
                     </div>
 
                     <!-- Submit Button -->
@@ -168,8 +182,7 @@
 				}
 				document.querySelector('.logout-confirm').style.display = 'none';
 			});
-		});			
-		
+		});		
     </script>
 </body>
 </html>
