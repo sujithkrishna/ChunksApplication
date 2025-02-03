@@ -9,18 +9,20 @@
     <link rel="stylesheet" href="css/mainstyle.css">
     <link rel="stylesheet" href="css/createFinance.css">	
     <script>
+	    if (window.history.replaceState) {
+	        window.history.replaceState(null, null, window.location.href);
+	    }
+    
 	    function setTodayDate() {
 			    const today = new Date();
 			    const year = today.getFullYear();
 			    const month = String(today.getMonth() + 1).padStart(2, '0'); // Months are zero-based, so add 1
 			    const day = String(today.getDate()).padStart(2, '0');
 			    const formattedDate = year + "-" + month + "-" + day;
-			    // Set the value of the finance-date input field to today's date
-			    document.getElementById('finance-date').value = formattedDate;
+			    document.getElementById('financeCreationDate').value = formattedDate;
 			  }
-	
-			  // Call the function when the page loads
-			  window.onload = setTodayDate;		
+		  // Call the function when the page loads
+		  window.onload = setTodayDate;		
 	</script>
 </head>
 <body>

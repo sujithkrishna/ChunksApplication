@@ -3,9 +3,15 @@
  */
 package com.chunks.service;
 
+import java.lang.reflect.Array;
+import java.time.LocalDateTime;
+import java.util.Arrays;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
+import com.chunks.exception.ErrorDetails;
 import com.chunks.model.CreateFinanceModel;
 import com.chunks.repository.FinanceRepository;
 
@@ -21,8 +27,16 @@ public class FinanceService {
 	@Autowired
     private FinanceRepository financeRepository;
 	
+	@Autowired
+	private ErrorDetails dataIntegrityException;
+	
 	public boolean createFinance(CreateFinanceModel finance) {
+		try {
 		financeRepository.save(finance);
+		}catch(DataIntegrityViolationException exception) {
+			dataIntegrityException.setTimestamp(LocalDateTime.now());
+			dataIntegrityException.setMessage(Arrays.asList("You are trying to insert the data which is already avilable in the system"));
+		}
 		return true;
 	}
 }

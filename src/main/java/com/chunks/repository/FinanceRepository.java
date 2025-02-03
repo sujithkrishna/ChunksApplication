@@ -13,7 +13,7 @@ import com.chunks.model.CreateFinanceModel;
  * @author Sujith Krishna
  * @date 2 Feb 2025
  */
-public interface FinanceRepository extends JpaRepository<CreateFinanceModel, String>{
+public interface FinanceRepository extends JpaRepository<CreateFinanceModel, Long>{
 
 	CreateFinanceModel findByFinanceType(String financeType);
     
