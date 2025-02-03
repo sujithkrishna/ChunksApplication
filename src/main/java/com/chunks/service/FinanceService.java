@@ -3,7 +3,6 @@
  */
 package com.chunks.service;
 
-import java.lang.reflect.Array;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 
@@ -36,6 +35,7 @@ public class FinanceService {
 		}catch(DataIntegrityViolationException exception) {
 			dataIntegrityException.setTimestamp(LocalDateTime.now());
 			dataIntegrityException.setMessage(Arrays.asList("You are trying to insert the data which is already avilable in the system"));
+			return false;
 		}
 		return true;
 	}

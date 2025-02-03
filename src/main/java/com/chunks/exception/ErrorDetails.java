@@ -27,7 +27,9 @@ import lombok.NoArgsConstructor;
 @Component
 @Scope(value = WebApplicationContext.SCOPE_REQUEST, proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class ErrorDetails {
+	
 	private LocalDateTime timestamp;
 	private List<String> message;
+	
 	
 }

@@ -3,6 +3,7 @@
  */
 package com.chunks.controller;
 
+import java.io.IOException;
 import java.time.LocalDate;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,10 @@ import com.chunks.exception.ErrorDetails;
 import com.chunks.model.CreateFinanceModel;
 import com.chunks.repository.FinanceRepository;
 import com.chunks.service.FinanceService;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 /**
  * 
@@ -44,7 +49,7 @@ public class FinanceController {
 						            @RequestParam String financeName,
 						            @RequestParam String financeOwnerName,
 						            @RequestParam String financeCreationDate,
-						            @RequestParam String financeAmount) {
+						            @RequestParam String financeAmount,HttpServletRequest request,HttpServletResponse response) {
 		System.out.println("START-------------------------------------------");
         LocalDate creationDate = LocalDate.parse(financeCreationDate); // Convert String to LocalDate
         CreateFinanceModel financeModel = new CreateFinanceModel();
@@ -59,7 +64,20 @@ public class FinanceController {
         financeModel.setFinanceCreationDate(creationDate);
         financeModel.setFinanceAmount(Double.parseDouble(financeAmount));
         financeModel.setCurrentFinanceAmount(0);
-        boolean status =  financeService.createFinance(financeModel);        
+	    		
+        
+        boolean status =  financeService.createFinance(financeModel); 
+        if(!status) {
+        	 request.setAttribute("error", "duplicate");
+     	    try {
+     			request.getRequestDispatcher("createFinance").forward(request, response);
+     		} catch (ServletException e) {
+     			e.printStackTrace();
+     		} catch (IOException e) {
+     			e.printStackTrace();
+     		}	
+        }
+        
 		System.out.println("Post Method---------------status"+status);
 		System.out.println("dataIntegrityException : "+dataIntegrityException.getMessage());
 		return "createFinance";

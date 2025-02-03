@@ -23,6 +23,18 @@
 			  }
 		  // Call the function when the page loads
 		  window.onload = setTodayDate;		
+		  function showError(message) {
+		      const errorDiv = document.getElementById('error-message');
+		      errorDiv.textContent = message; // Set the error message dynamically
+		      errorDiv.classList.remove('hidden');
+		      errorDiv.classList.add('visible');
+		  }
+
+		  function hideError() {
+		      const errorDiv = document.getElementById('error-message');
+		      errorDiv.classList.remove('visible');
+		      errorDiv.classList.add('hidden');
+		  }		  
 	</script>
 </head>
 <body>
@@ -84,6 +96,10 @@
         <div class="content-wrapper">
             <section>
                 <h2>Create Finance</h2>
+					<div id="error-message" 
+					     class="error-message <%= request.getAttribute("error") != null ? "visible" : "hidden" %>">
+					    You are trying to insert the data which is already available in the system.
+					</div>
                 <form method="post" action="createFinance" >
                     <div class="form-group">
                         <label for="finance-type">Finance Type</label>
