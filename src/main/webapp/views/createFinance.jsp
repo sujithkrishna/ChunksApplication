@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="jakarta.tags.core" prefix="c" %>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -96,9 +97,8 @@
         <div class="content-wrapper">
             <section>
                 <h2>Create Finance</h2>
-					<div id="error-message" 
-					     class="error-message <%= request.getAttribute("error") != null ? "visible" : "hidden" %>">
-					    You are trying to insert the data which is already available in the system.
+					<div id="error-message" class="error-message <%= request.getAttribute("error") != null ? "visible" : "hidden" %>">
+					    <c:out value="${error}" />
 					</div>
                 <form method="post" action="createFinance" >
                     <div class="form-group">

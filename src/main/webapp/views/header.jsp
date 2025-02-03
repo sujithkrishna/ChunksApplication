@@ -1,8 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<body>
 <!-- Header -->
 <div class="sub-header">
   <div class="container">
@@ -23,5 +18,3 @@
     </div>
   </div>
 </div>
-</body>
-</html>
