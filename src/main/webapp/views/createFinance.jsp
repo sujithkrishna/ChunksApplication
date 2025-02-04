@@ -133,7 +133,7 @@
                         <label for="financeOwnerNames">Finance Owner Name</label>
                         <select id="financeOwnerName"  name="financeOwnerName" class="input-field">
                             <option value="" disabled selected>Select Person</option>
-                            <option value="SujithKrishna">Sujith Krishna</option>
+                            <option value="Sujith Krishna">Sujith Krishna</option>
                             <option value="Fr Jaison">Fr Jaison</option>
                             <option value="Manesh">Manesh</option>
                             <option value="Jijin">Jijin</option>
@@ -167,9 +167,9 @@
 		 var financeData = {};
 		 <c:forEach items="${allFinance}" var="finance">
 		     (function() {
-		         var type = "${finance.financeType}";
-		         var name = "${finance.financeName}";
-		         var owner = "${finance.financeOwner}";
+		         var type = "${finance.id.financeType}";
+		         var name = "${finance.id.financeName}";
+		         var owner = "${finance.id.financeOwner}";
 		         if (!financeData[type]) {
 		             financeData[type] = [];
 		         }
@@ -269,12 +269,15 @@
 		function financeEdit(){
 			const editButton = document.getElementById("edit-button");
 		    if (editButton.textContent === "Edit") {
-		        editButton.textContent = "Save";
+		        editButton.textContent = "Update";
 		        document.getElementById('delete-overlay').style.display = 'none';
 				document.getElementById('edit-overlay').style.display = 'block';
 		    } else {
 		        editButton.textContent = "Edit";
-		        
+				// Submit the page here	
+				const form = document.getElementById('create');
+    			form.action = 'updateFinance';  // Change endpoint for updates
+    			form.submit();
 		    }
 		}
 
@@ -304,7 +307,7 @@
 		    <c:forEach items="${allFinance}" var="financeItem">
 		         var amount = "${financeItem.financeAmount}";
 		         var financeDate= "${financeItem.financeCreationDate}";
-         		if("${financeItem.financeType}"==financeTypeEditValue && "${financeItem.financeName}" == financeNameEditValue && "${financeItem.financeOwner}" == financeOwnerNameEditValue){
+         		if("${financeItem.id.financeType}"==financeTypeEditValue && "${financeItem.id.financeName}" == financeNameEditValue && "${financeItem.id.financeOwner}" == financeOwnerNameEditValue){
          			 document.getElementById('financeAmount').value = amount;
          			document.getElementById('financeCreationDate').value = financeDate;
          			 console.log("Date is "+financeDate);

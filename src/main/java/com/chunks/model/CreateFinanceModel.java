@@ -3,9 +3,11 @@
  */
 package com.chunks.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -24,35 +26,16 @@ import lombok.NoArgsConstructor;
  * @author Sujith Krishna
  * @date 2 Feb 2025
  */
-@Entity
-@Table(
-    name = "finance",
-    uniqueConstraints = {
-        @UniqueConstraint(
-        	name = "CONSTRAINT_INDEX_F",		
-            columnNames = {"finance_type", "finance_name", "finance_owner_name"}
-        )
-    }
-)
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity
+@Table(name = "finance") // Optional: Specify table name if different
 public class CreateFinanceModel {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "finance_seq")
-    @SequenceGenerator(name = "finance_seq", sequenceName = "finance_seq", allocationSize = 1)
-    private Long id;  // Primary key
-
-    @Column(name = "finance_type", nullable = false)
-    private String financeType;
-
-    @Column(name = "finance_name", nullable = false)
-    private String financeName;
-
-    @Column(name = "finance_owner_name", nullable = false)
-    private String financeOwner;
-
+	@EmbeddedId
+	private FinanceCompositeKey id; // Composite key
+	 
     @Column(name = "finance_creation_date", nullable = false)
     private LocalDate financeCreationDate;
 

@@ -34,9 +34,9 @@ public class FinanceService {
 	
 	public void createFinance(CreateFinanceModel finance) throws DuplicateFinanceException {
 		Optional<CreateFinanceModel> existingFinance = financeRepository.findByTypeNameAndOwner(
-		        finance.getFinanceType(), 
-		        finance.getFinanceName(), 
-		        finance.getFinanceOwner()
+				finance.getId().getFinanceType(), 
+				finance.getId().getFinanceName(), 
+				finance.getId().getFinanceOwner()
 		    );
 	    
 	    if (existingFinance.isPresent()) {
@@ -48,9 +48,31 @@ public class FinanceService {
 	    }
 	}
 	
+	public void updateFinance(CreateFinanceModel finance) throws DuplicateFinanceException {
+		
+		CreateFinanceModel existingModel = this.updateByCompositeKey(finance.getId().getFinanceType(),finance.getId().getFinanceName(),finance.getId().getFinanceOwner(),finance);
+	   // Update here..
+	}
+	
+	
+	
     public List<CreateFinanceModel> getAllFinances() {
         return financeRepository.findAllFinance(); 
     }
 	
+    public CreateFinanceModel updateByCompositeKey(String financeType, String financeName, String financeOwner, 
+            CreateFinanceModel updatedFinance) {
+			return financeRepository.findByTypeNameAndOwner(financeType, financeName, financeOwner)
+				.map(existingFinance -> {
+					existingFinance.setFinanceAmount(updatedFinance.getFinanceAmount());
+					existingFinance.setCurrentFinanceAmount(updatedFinance.getCurrentFinanceAmount());
+					existingFinance.setFinanceCreationDate(updatedFinance.getFinanceCreationDate());
+					financeRepository.delete(existingFinance);
+					return financeRepository.save(existingFinance);
+				})
+			.orElseThrow(() -> new RuntimeException("Finance entry not found with provided composite key"));
+	}
+    
+    
 	
 }
