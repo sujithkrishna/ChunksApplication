@@ -61,57 +61,38 @@
 	</div>
 
 
-		<!-- Add this HTML for Edit dialog -->
-		<div id="edit-overlay" class="edit-overlay">
-			<p><h2>Are you want to Edit below finance?</h2></p>
-	         <div class="form-group">
-	             <label for="finance-type">Finance Type</label>
-	             <select id="financeType" name="financeType" class="input-field">
-	                 <option value="" disabled selected>Select Finance Type</option>
-	                 <option value="Primary">Primary</option>
-	                 <option value="Secondary">Secondary</option>
-	             </select>
-	          </div>	
-	          <div class="form-group">   
-	            <br>
-	            <label for="finance-type">Finance Name</label>
-	            <select id="financeName" name="financeName" class="input-field">
-	                <option value="" disabled selected>Select Finance Name</option>
-	                <option value="Primary">Onam Fund</option>
-	                <option value="Secondary">Chunks Finance</option>
-	            </select>
-	          </div>  
-			<div class="confirm-buttons">
-				<button onclick="editConfirmBtnCancel()">Cancel</button>
-			</div>             
-		</div>
+	<!-- Edit Overlay -->
+	<div id="edit-overlay" class="edit-overlay">
+	    <p><h2>Are you want to edit below finance?</h2></p>
+	    <div class="form-group">
+	        <label for="financeTypeEdit">Finance Type</label>
+	        <select id="financeTypeEdit" name="financeType" class="input-field">
+	            <option value="" disabled selected>Select Finance Type</option>
+	        </select>
+	    </div>
+	    <div class="form-group">
+	        <label for="financeNameEdit">Finance Name</label>
+	        <select id="financeNameEdit" name="financeName" class="input-field">
+	            <option value="" disabled selected>Select Finance Name</option>
+	        </select>
+	    </div>
+         <div class="form-group">
+             <label for="financeOwnerNameEdit">Finance Owner Name</label>
+             <select id="financeOwnerNameEdit"  name="financeOwnerName" class="input-field">
+                 <option value="" disabled selected>Select Owner</option>
+             </select>
+         </div>    
+	    <div class="confirm-buttons">
+	        <button onclick="editConfirmBtnCancel()">Cancel</button>
+	        <!-- Add Confirm Edit button if needed -->
+	    </div>
+	</div>
 	
 	
 
 	<!-- Add this HTML for Edit dialog -->
 	<div id="delete-overlay" class="delete-overlay">
 		<p><h2>Are you want to Delete below finance?</h2></p>
-         <div class="form-group">
-             <label for="finance-type">Finance Type</label>
-             <select id="financeType" name="financeType" class="input-field">
-                 <option value="" disabled selected>Select Finance Type</option>
-                 <option value="Primary">Primary</option>
-                 <option value="Secondary">Secondary</option>
-             </select>
-          </div>	
-           <div class="form-group">   
-             <br>
-             <label for="finance-type">Finance Name</label>
-             <select id="financeType" name="financeType" class="input-field">
-                 <option value="" disabled selected>Select Finance Name</option>
-                 <option value="Primary">Onam Fund</option>
-                 <option value="Secondary">Chunks Finance</option>
-             </select>
-           </div> 
-		<div class="confirm-buttons">
-			<button class="confirm-btn yes">Yes, Delete</button>
-			<button onclick="deleteConfirmBtnCancel()">Cancel</button>
-		</div>           
 	</div>
 
 
@@ -127,10 +108,10 @@
         <div class="content-wrapper">
             <section>
                 <h2>Create Finance</h2>
-					<div id="error-message" class="error-message <%= request.getAttribute("error") != null ? "visible" : "hidden" %>">
+					<div id="error-message" class="error-message ${error != null ? 'visible' : 'hidden'}">
 					    <c:out value="${error}" />
 					</div>
-					<div id="success-message" class="success-message <%= request.getAttribute("success") != null ? "visible" : "hidden" %>">
+					<div id="success-message" class="success-message ${success != null ? 'visible' : 'hidden'}">
 					    <c:out value="${success}" />
 					</div>					
                 <form method="post" action="createFinance" >
@@ -183,7 +164,60 @@
 	<!-- Footer Fragment -->
 	<%@ include file="chunksFinanceFooter.jsp" %>
 	 <script>
+		 var financeData = {};
+		 <c:forEach items="${allFinance}" var="finance">
+		     (function() {
+		         var type = "${finance.financeType}";
+		         var name = "${finance.financeName}";
+		         var owner = "${finance.financeOwner}";
+		         if (!financeData[type]) {
+		             financeData[type] = [];
+		         }
+		         // Check for duplicates using both name and owner
+		         var exists = financeData[type].some(item => item.name === name && item.owner === owner);
+		         if (!exists) {
+		             financeData[type].push({ name: name, owner: owner });
+		         }
+		     })();
+		 </c:forEach>
 
+		 document.addEventListener('DOMContentLoaded', function() {
+		     const typeSelect = document.getElementById('financeTypeEdit');
+		     typeSelect.innerHTML = '<option value="" disabled selected>Select Finance Type</option>';
+		     Object.keys(financeData).forEach(type => {
+		         typeSelect.appendChild(new Option(type, type));
+		     });
+		     // Trigger initial population of names
+		     typeSelect.dispatchEvent(new Event('change'));
+		 });
+	
+		 document.getElementById('financeTypeEdit').addEventListener('change', function() {
+		     const selectedType = this.value;
+		     const nameSelect = document.getElementById('financeNameEdit');
+		     nameSelect.innerHTML = '<option value="" disabled selected>Select Finance Name</option>';
+		     
+		     if (selectedType && financeData[selectedType]) {
+		         financeData[selectedType].forEach(item => {
+		             nameSelect.appendChild(new Option(item.name, item.name));
+		         });
+		     }
+		     nameSelect.dispatchEvent(new Event('change'));
+		 });
+	
+		 document.getElementById('financeNameEdit').addEventListener('change', function() {
+		     const selectedType = document.getElementById('financeTypeEdit').value;
+		     const selectedName = this.value;
+		     const ownerSelect = document.getElementById('financeOwnerNameEdit');
+		     ownerSelect.innerHTML = '<option value="" disabled selected>Select Owner</option>';
+	
+		     if (selectedType && selectedName) {
+		         const match = financeData[selectedType].find(item => item.name === selectedName);
+		         if (match) {
+		             ownerSelect.appendChild(new Option(match.owner, match.owner));
+		         }
+		     }
+		 });
+	 
 	     function handleButtonClick(event) {
 	         const button = event.target;
 	         button.classList.add('clicked');
