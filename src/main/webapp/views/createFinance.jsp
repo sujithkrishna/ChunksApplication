@@ -192,31 +192,38 @@
 		 });
 	
 		 document.getElementById('financeTypeEdit').addEventListener('change', function() {
-		     const selectedType = this.value;
-		     const nameSelect = document.getElementById('financeNameEdit');
-		     nameSelect.innerHTML = '<option value="" disabled selected>Select Finance Name</option>';
-		     
-		     if (selectedType && financeData[selectedType]) {
-		         financeData[selectedType].forEach(item => {
-		             nameSelect.appendChild(new Option(item.name, item.name));
-		         });
-		     }
-		     nameSelect.dispatchEvent(new Event('change'));
-		 });
+			    const selectedType = this.value;
+			    const nameSelect = document.getElementById('financeNameEdit');
+			    nameSelect.innerHTML = '<option value="" disabled selected>Select Finance Name</option>';
+			     
+			    if (selectedType && financeData[selectedType]) {
+			        const uniqueNames = new Set(); // Track unique names
+			        financeData[selectedType].forEach(item => {
+			            if (!uniqueNames.has(item.name)) { // Check if name is already added
+			                nameSelect.appendChild(new Option(item.name, item.name));
+			                uniqueNames.add(item.name); // Add to Set
+			            }
+			        });
+			    }
+			    nameSelect.dispatchEvent(new Event('change'));
+			});
 	
 		 document.getElementById('financeNameEdit').addEventListener('change', function() {
-		     const selectedType = document.getElementById('financeTypeEdit').value;
-		     const selectedName = this.value;
-		     const ownerSelect = document.getElementById('financeOwnerNameEdit');
-		     ownerSelect.innerHTML = '<option value="" disabled selected>Select Owner</option>';
-	
-		     if (selectedType && selectedName) {
-		         const match = financeData[selectedType].find(item => item.name === selectedName);
-		         if (match) {
-		             ownerSelect.appendChild(new Option(match.owner, match.owner));
-		         }
-		     }
-		 });
+			    const selectedType = document.getElementById('financeTypeEdit').value;
+			    const selectedName = this.value;
+			    const ownerSelect = document.getElementById('financeOwnerNameEdit');
+			    ownerSelect.innerHTML = '<option value="" disabled selected>Select Owner</option>';
+
+			    if (selectedType && selectedName) {
+			        const uniqueOwners = new Set(); // Track unique owners
+			        financeData[selectedType].forEach(item => {
+			            if (item.name === selectedName && !uniqueOwners.has(item.owner)) {
+			                ownerSelect.appendChild(new Option(item.owner, item.owner));
+			                uniqueOwners.add(item.owner); // Add to Set
+			            }
+			        });
+			    }
+			});
 	 
 	     function handleButtonClick(event) {
 	         const button = event.target;
