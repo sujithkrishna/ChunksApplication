@@ -41,7 +41,6 @@
 		      const errorDiv = document.getElementById('error-message');
 		      errorDiv.classList.remove('visible');
 		      errorDiv.classList.add('hidden');
-		      
 		      const sucessDiv = document.getElementById('success-message');
 		      sucessDiv.classList.remove('visible');
 		      sucessDiv.classList.add('hidden');		      
@@ -62,37 +61,36 @@
 	</div>
 
 
-	<!-- Add this HTML for Edit dialog -->
-	<div id="edit-overlay" class="edit-overlay">
-		<p>Are wanted to edit</p>
-         <div class="form-group">
-             <label for="finance-type">Finance Type</label>
-             <select id="financeType" name="financeType" class="input-field">
-                 <option value="" disabled selected>Select Finance Type</option>
-                 <option value="Primary">Primary</option>
-                 <option value="Secondary">Secondary</option>
-             </select>
-          </div>	
-          <div class="form-group">   
-            <br>
-            <label for="finance-type">Finance Name</label>
-            <select id="financeType" name="financeType" class="input-field">
-                <option value="" disabled selected>Select Finance Name</option>
-                <option value="Primary">Onam Fund</option>
-                <option value="Secondary">Chunks Finance</option>
-            </select>
-          </div>  
-		<div class="confirm-buttons">
-			<button class="confirm-btn yes">Yes, Edit</button>
-			<button class="confirm-btn no">Cancel</button>
-		</div>             
-	</div>
+		<!-- Add this HTML for Edit dialog -->
+		<div id="edit-overlay" class="edit-overlay">
+			<p><h2>Are you want to Edit below finance?</h2></p>
+	         <div class="form-group">
+	             <label for="finance-type">Finance Type</label>
+	             <select id="financeType" name="financeType" class="input-field">
+	                 <option value="" disabled selected>Select Finance Type</option>
+	                 <option value="Primary">Primary</option>
+	                 <option value="Secondary">Secondary</option>
+	             </select>
+	          </div>	
+	          <div class="form-group">   
+	            <br>
+	            <label for="finance-type">Finance Name</label>
+	            <select id="financeName" name="financeName" class="input-field">
+	                <option value="" disabled selected>Select Finance Name</option>
+	                <option value="Primary">Onam Fund</option>
+	                <option value="Secondary">Chunks Finance</option>
+	            </select>
+	          </div>  
+			<div class="confirm-buttons">
+				<button onclick="editConfirmBtnCancel()">Cancel</button>
+			</div>             
+		</div>
 	
 	
 
 	<!-- Add this HTML for Edit dialog -->
 	<div id="delete-overlay" class="delete-overlay">
-		<p>Are wanted to Delete</p>
+		<p><h2>Are you want to Delete below finance?</h2></p>
          <div class="form-group">
              <label for="finance-type">Finance Type</label>
              <select id="financeType" name="financeType" class="input-field">
@@ -112,7 +110,7 @@
            </div> 
 		<div class="confirm-buttons">
 			<button class="confirm-btn yes">Yes, Delete</button>
-			<button class="confirm-btn no">Cancel</button>
+			<button onclick="deleteConfirmBtnCancel()">Cancel</button>
 		</div>           
 	</div>
 
@@ -224,13 +222,27 @@
 				document.querySelector('.logout-confirm').style.display = 'none';
 			});
 		});
+		
+		
+		
 		function financeEdit(){
+			document.getElementById('delete-overlay').style.display = 'none';
 			document.getElementById('edit-overlay').style.display = 'block';
 		}
 
 		function financeDelete(){
+			document.getElementById('edit-overlay').style.display = 'none';
 			document.getElementById('delete-overlay').style.display = 'block';
 		}	
+		
+		function editConfirmBtnCancel() {
+			document.getElementById('edit-overlay').style.display = 'none';
+		}	
+		
+		function deleteConfirmBtnCancel(){
+			document.getElementById('delete-overlay').style.display = 'none';
+		}
+		
 		
     </script>
 </body>

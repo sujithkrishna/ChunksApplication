@@ -5,6 +5,7 @@ package com.chunks.service;
 
 import java.time.LocalDateTime;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,7 +48,9 @@ public class FinanceService {
 	    }
 	}
 	
-	
+    public List<CreateFinanceModel> getAllFinances() {
+        return financeRepository.findAllFinance(); 
+    }
 	
 	
 }
