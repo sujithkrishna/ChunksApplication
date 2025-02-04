@@ -83,8 +83,8 @@
              </select>
          </div>    
 	    <div class="confirm-buttons">
+			<button onclick="editConfirmBtnEdit()">Edit</button>	    	
 	        <button onclick="editConfirmBtnCancel()">Cancel</button>
-	        <!-- Add Confirm Edit button if needed -->
 	    </div>
 	</div>
 	
@@ -114,7 +114,7 @@
 					<div id="success-message" class="success-message ${success != null ? 'visible' : 'hidden'}">
 					    <c:out value="${success}" />
 					</div>					
-                <form method="post" action="createFinance" >
+                <form method="post" action="createFinance" id="create">
                     <div class="form-group">
                         <label for="finance-type">Finance Type</label>
                         <select id="financeType" name="financeType" class="input-field">
@@ -134,7 +134,7 @@
                         <select id="financeOwnerName"  name="financeOwnerName" class="input-field">
                             <option value="" disabled selected>Select Person</option>
                             <option value="SujithKrishna">Sujith Krishna</option>
-                            <option value="FrJaison">Fr Jaison</option>
+                            <option value="Fr Jaison">Fr Jaison</option>
                             <option value="Manesh">Manesh</option>
                             <option value="Jijin">Jijin</option>
                         </select>
@@ -267,13 +267,21 @@
 		
 		
 		function financeEdit(){
-			document.getElementById('delete-overlay').style.display = 'none';
-			document.getElementById('edit-overlay').style.display = 'block';
+			const editButton = document.getElementById("edit-button");
+		    if (editButton.textContent === "Edit") {
+		        editButton.textContent = "Save";
+		        document.getElementById('delete-overlay').style.display = 'none';
+				document.getElementById('edit-overlay').style.display = 'block';
+		    } else {
+		        editButton.textContent = "Edit";
+		        
+		    }
 		}
 
 		function financeDelete(){
 			document.getElementById('edit-overlay').style.display = 'none';
 			document.getElementById('delete-overlay').style.display = 'block';
+			
 		}	
 		
 		function editConfirmBtnCancel() {
@@ -284,6 +292,29 @@
 			document.getElementById('delete-overlay').style.display = 'none';
 		}
 		
+		function editConfirmBtnEdit() {
+			//Submit the page here with Edit purpose.
+			const financeTypeEditValue=document.getElementById("financeTypeEdit").value;
+			const financeNameEditValue=document.getElementById("financeNameEdit").value;
+			const financeOwnerNameEditValue=document.getElementById("financeOwnerNameEdit").value;
+			 // Set values to main form fields
+		    document.getElementById('financeType').value = financeTypeEditValue;
+		    document.getElementById('financeName').value = financeNameEditValue;
+		    document.getElementById('financeOwnerName').value = financeOwnerNameEditValue;
+		    <c:forEach items="${allFinance}" var="financeItem">
+		         var amount = "${financeItem.financeAmount}";
+		         var financeDate= "${financeItem.financeCreationDate}";
+         		if("${financeItem.financeType}"==financeTypeEditValue && "${financeItem.financeName}" == financeNameEditValue && "${financeItem.financeOwner}" == financeOwnerNameEditValue){
+         			 document.getElementById('financeAmount').value = amount;
+         			document.getElementById('financeCreationDate').value = financeDate;
+         			 console.log("Date is "+financeDate);
+         		}
+		    	
+	    	</c:forEach>
+		    
+		    // Close the edit overlay
+		    document.getElementById('edit-overlay').style.display = 'none';
+		}
 		
     </script>
 </body>
